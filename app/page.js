@@ -1,10 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+const LOADING_MS = 3000;
 
 export default function Home() {
+  const [ready, setReady] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const timer = setTimeout(() => setReady(true), LOADING_MS);
+    return () => clearTimeout(timer);
+  }, []);
 
   async function handleContinue() {
     setLoading(true);
@@ -12,9 +20,7 @@ export default function Home() {
     try {
       const res = await fetch('/api/gate', { method: 'POST' });
       if (!res.ok) throw new Error('failed');
-      setTimeout(() => {
-        window.location.href = '/page2';
-      }, 900);
+      window.location.href = '/page2';
     } catch {
       setLoading(false);
       setError('Something went wrong. Please try again.');
@@ -35,17 +41,18 @@ export default function Home() {
             Tap continue when you're set.
           </p>
 
-          {loading && (
+          {!ready ? (
             <div className="progress-wrap" aria-hidden="true">
               <div className="progress-bar" />
             </div>
+          ) : (
+            <>
+              <button className="cta" onClick={handleContinue} disabled={loading}>
+                {loading ? 'Please wait…' : 'Continue →'}
+              </button>
+              {error && <p className="error">{error}</p>}
+            </>
           )}
-
-          <button className="cta" onClick={handleContinue} disabled={loading}>
-            {loading ? 'Please wait…' : 'Continue →'}
-          </button>
-
-          {error && <p className="error">{error}</p>}
         </div>
       </div>
 
@@ -118,14 +125,13 @@ export default function Home() {
           background: rgba(255, 255, 255, 0.15);
           border-radius: 99px;
           overflow: hidden;
-          margin-bottom: 1.2rem;
         }
         .progress-bar {
           height: 100%;
           width: 0%;
           background: #e8d5b0;
           border-radius: 99px;
-          animation: fill 0.9s ease-out forwards;
+          animation: fill 3s linear forwards;
         }
         .cta {
           display: inline-block;
@@ -141,6 +147,7 @@ export default function Home() {
           text-transform: uppercase;
           cursor: pointer;
           transition: background 0.2s, color 0.2s, opacity 0.2s;
+          animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
         .cta:hover:not(:disabled),
         .cta:focus-visible:not(:disabled) {
