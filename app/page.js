@@ -66,7 +66,7 @@ export default function Home() {
           font-family: 'DM Sans', system-ui, sans-serif;
           color: #ffffff;
           background-color: #1a1a1a;
-          background-image: radial-gradient(circle at 30% 20%, #2a2a2a, #0d0d0d 70%);
+          background-image: url('/bg.jpg');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
