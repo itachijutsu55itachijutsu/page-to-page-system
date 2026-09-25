@@ -1,6 +1,5 @@
 'use client';
 
-
 import { useState } from 'react';
 
 export default function Home() {
@@ -15,7 +14,7 @@ export default function Home() {
       if (!res.ok) throw new Error('failed');
       setTimeout(() => {
         window.location.href = '/page2';
-      }, 550);
+      }, 900);
     } catch {
       setLoading(false);
       setError('Something went wrong. Please try again.');
@@ -26,8 +25,8 @@ export default function Home() {
     <>
       <div className="page">
         <div className="card">
-          <div className="brand">Your Brand</div>
-          <p className="tagline">yourdomain.com</p>
+          <div className="brand">Full Video</div>
+          <p className="tagline">flurze.online</p>
           <div className="divider" />
 
           <p className="message">
@@ -115,7 +114,7 @@ export default function Home() {
           margin: 0 0 2rem;
         }
         .progress-wrap {
-          height: 3px;
+          height: 4px;
           background: rgba(255, 255, 255, 0.15);
           border-radius: 99px;
           overflow: hidden;
@@ -126,7 +125,7 @@ export default function Home() {
           width: 0%;
           background: #e8d5b0;
           border-radius: 99px;
-          animation: fill 0.6s ease-out forwards;
+          animation: fill 0.9s ease-out forwards;
         }
         .cta {
           display: inline-block;
