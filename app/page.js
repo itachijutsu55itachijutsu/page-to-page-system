@@ -134,50 +134,45 @@ export default function Home() {
           animation: fill 3s linear forwards;
         }
         .cta {
-          display: inline-block;
-          margin-top: 0.4rem;
-          padding: 0.7rem 2rem;
-          border: 1px solid #e8d5b0;
-          border-radius: 99px;
-          background: transparent;
-          color: #e8d5b0;
-          font-size: 0.88rem;
-          font-family: inherit;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          cursor: pointer;
-          transition: background 0.2s, color 0.2s, opacity 0.2s;
-          animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-        .cta:hover:not(:disabled),
-        .cta:focus-visible:not(:disabled) {
-          background: #e8d5b0;
-          color: #1a1a1a;
-          outline: none;
-        }
-        .cta:disabled {
-          opacity: 0.7;
-          cursor: default;
-        }
-        .error {
-          margin-top: 1rem;
-          font-size: 0.8rem;
-          color: #ff6b6b;
-        }
-        @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(22px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.85rem 2.6rem;
+  border: none;
+  border-radius: 99px;
+  background: #e8d5b0;
+  color: #1a1a1a;
+  font-size: 0.92rem;
+  font-weight: 500;
+  font-family: inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(232, 213, 176, 0.35);
+  transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+  animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both, pulse 2.2s ease-in-out 0.6s infinite;
+}
+.cta:hover:not(:disabled),
+.cta:focus-visible:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(232, 213, 176, 0.5);
+  outline: none;
+}
+.cta:active:not(:disabled) {
+  transform: translateY(0);
+}
         }
         @keyframes fill {
           to {
             width: 100%;
           }
+          @keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 24px rgba(232, 213, 176, 0.35);
+  }
+  50% {
+    box-shadow: 0 4px 32px rgba(232, 213, 176, 0.6);
+  }
+}
         }
       `}</style>
     </>
