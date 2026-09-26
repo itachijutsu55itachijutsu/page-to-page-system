@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-const TARGET_URL = 'https://example.com'; // <-- apna URL yahan replace karein
+const TARGET_URL = 'https://www.profitableratecpmnetwork.com/pr05z0d17?key=8c2d662b33c1776277adf8cc2c0433f0'; // <-- apna URL yahan replace karein
 
 export default function Page2() {
   useEffect(() => {
