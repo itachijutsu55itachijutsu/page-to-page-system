@@ -1,21 +1,39 @@
+import { DM_Sans, Playfair_Display } from 'next/font/google';
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-dm',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['700'],
+  display: 'swap',
+  variable: '--font-playfair',
+});
+
 export const metadata = {
   title: 'Page 1',
 };
 
+export const viewport = {
+  themeColor: '#1a1a1a',
+  colorScheme: 'dark',
+};
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-
-    <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
-</head>
-      
-      <body style={{ margin: 0 }}>{children}</body>
+    <html
+      lang="en"
+      className={`${dmSans.variable} ${playfair.variable}`}
+      style={{ backgroundColor: '#1a1a1a', colorScheme: 'dark' }}
+    >
+      <head>
+        <link rel="preload" as="image" href="/bg.jpg" />
+      </head>
+      <body style={{ margin: 0, backgroundColor: '#1a1a1a' }}>{children}</body>
     </html>
   );
 }
