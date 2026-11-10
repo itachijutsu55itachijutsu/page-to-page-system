@@ -16,6 +16,7 @@ export default function Home() {
   }, []);
 
   async function handleContinue() {
+    if (loading) return;
     setLoading(true);
     setError('');
     try {
@@ -47,12 +48,8 @@ export default function Home() {
           </div>
         ) : (
           <>
-            <button
-              className={styles.cta}
-              onClick={handleContinue}
-              disabled={loading}
-            >
-              {loading ? 'Please wait…' : 'Continue →'}
+            <button className={styles.cta} onClick={handleContinue}>
+              Continue →
             </button>
             {error && <p className={styles.error}>{error}</p>}
           </>
