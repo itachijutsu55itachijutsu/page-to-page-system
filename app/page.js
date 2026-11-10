@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import styles from './page.module.css';
 
-const LOADING_MS = 3000;
+const LOADING_MS = 2000;
 
 export default function Home() {
   const [ready, setReady] = useState(false);
